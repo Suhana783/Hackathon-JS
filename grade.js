@@ -25,7 +25,6 @@ document.getElementById('calculateBtn').addEventListener('click', () => {
     Number(document.getElementById('mark5').value)
   ];
 
-  // Validate input
   if (marks.some(mark => isNaN(mark) || mark < 0 || mark > 100)) {
     document.getElementById('result').textContent = "Please enter valid marks (0-100).";
     return;
@@ -39,7 +38,7 @@ document.getElementById('calculateBtn').addEventListener('click', () => {
 
 
 document.getElementById('resetBtn').addEventListener('click', () => {
-  // Clear all input fields
+  
   for (let i = 1; i <= 5; i++) {
     document.getElementById('mark' + i).value = '';
   }

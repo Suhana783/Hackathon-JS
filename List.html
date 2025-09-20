@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>MY LIST</title>
+   <style>
+
+body {
+   font-family: poppins, sans-serif;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   background-image: url('bg.jpeg');
+   background-size: cover;
+   background-position: center;
+   margin: 0;
+}
+
+
+div {
+   background-color: rgba(255, 255, 255, 0.313);
+   padding: 10px 30px;
+   border-radius: 20px;
+   box-shadow: 0 10px 20px;
+   text-align: center;
+   width: auto;
+}
+
+
+h1 {
+   margin-bottom: 40px;
+   color: #352e2e;
+}
+
+
+input[type="text"] {
+   padding: 20px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   width: 300px;
+   margin: 30px
+}
+
+
+button {
+   padding: 18px 30px;
+   border: none;
+   border-radius: 10px;
+   background-color: #d00808e5;
+   color: white;
+   cursor: pointer;
+   margin-left: 10px;
+   font-weight: bold;
+}
+
+
+ul {
+   list-style-type: none;
+   padding: 0;
+   margin-top: 40px;
+}
+
+
+li {
+   margin: 8px 0;
+   padding: 10px 15px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   background: white;
+   font-size: 15px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+
+.btns button {
+   padding: 8px 12px;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   margin-left: 5px;
+   font-size: 14px;
+}  
+.remove-btn {
+   background-color: #716405;
+   color: white;
+}
+
+
+.edit-btn {
+   background-color: #0b5ed7;
+   color: white;
+
+
+}
+
+
+button:hover {
+   opacity: 0.8;
+}
+
+</style>
+</head>
+<body>
+   <div>
+       <h1> My List</h1>
+       <div class="input-box">
+           <input type="text" id="itemInput" placeholder="Enter item....">
+           <button id="addBtn">Add</button>
+
+
+       </div>
+       <ul id="myList"></ul>
+   </div>
+   <script>
+       const input = document.getElementById('itemInput');
+       const addBtn = document.getElementById('addBtn');
+       const myList = document.getElementById('myList');
+
+
+       let editItem = null;
+
+
+       function addItem() {
+           const itemText = input.value.trim();
+           if (itemText === "") {
+               alert("⚠️ Please enter something!");
+               return;
+           }
+
+
+           if (editItem) {
+               editItem.firstChild.textContent = itemText;
+               addBtn.textContent = 'Add';
+               editItem = null;
+               input.value = "";
+               return;
+           }
+
+
+           const li= document.createElement('li');
+
+
+
+
+           const textSpan = document.createElement('soan');
+           textSpan.textContent = itemText;
+           li.appendChild(textSpan);
+
+
+
+
+       const btnDiv = document.createElement('div');
+       btnDiv.classList.add('btns');
+
+
+       const editBtn = document.createElement('button');
+       editBtn.textContent = 'Edit';
+       editBtn.classList.add('edit-btn');
+       editBtn.onclick = () => {
+           input.value = textSpan.textContent;
+           addBtn.textContent = "Save";
+           editItem = li ;
+       };
+       const removeBtn = document.createElement('button');
+       removeBtn.textContent = 'Remove';
+       removeBtn.classList.add('remove-btn');
+       removeBtn.onclick = () => {
+           myList.removeChild(li);
+       };
+
+
+       btnDiv.appendChild(editBtn);
+       btnDiv.appendChild(removeBtn);
+       li.appendChild(btnDiv);
+       myList.appendChild(li);
+       input.value = "";
+       }
+
+
+       addBtn.addEventListener('click', addItem);
+
+
+       input.addEventListener('keypress', (e) => {
+           if (e.key === 'Enter') {
+               addItem();
+           }
+       });
+
+
+   </script>
+  
+</body>
+</html>
