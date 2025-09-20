@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Manager</title>
+    <link rel="stylesheet" href="employee.css">
+</head>
+<body>
+    
+    <div class="employee-manager-container">
+        <h1>Employee Data Management</h1>
+        <div class="employee-database-section">
+            <h3>Employee Database</h3>
+            <ul id="employee-database-list">
+            </ul>
+        </div>
+
+        <div class="button-section">
+            <button id="showNamesBtn">Show Names</button>
+            <button id="filterSalaryBtn">Filter Salary > $40,000</button>
+            <button id="totalSalaryBtn">Total Salary Expense</button> 
+        </div>
+         
+        <div id="results-output" class="results-section"></div>
+         <button id="resetBtn">Reset Results</button>
+    </div>
+    <script src="employee.js"></script>
+</body>
+</html>

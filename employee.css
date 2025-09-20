@@ -1,0 +1,124 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #D9E9CF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+   
+}
+
+
+.employee-manager-container {
+    background-color: #96A78D;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.employee-database-section {
+    background-color: #e8f5e9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #388e3c;
+    margin-top: 0;
+}
+
+#employee-database-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#employee-database-list li {
+    background-color: #dcedc8;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#showNamesBtn {
+    background-color: #4caf50;
+}
+
+#showNamesBtn:hover {
+    background-color: #388e3c;
+}
+
+#filterSalaryBtn {
+    background-color: #2196f3;
+}
+
+#filterSalaryBtn:hover {
+    background-color: #1976d2;
+}
+
+#totalSalaryBtn {
+    background-color: #ff9800;
+}
+
+#totalSalaryBtn:hover {
+    background-color: #f57c00;
+}
+
+
+
+.results-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    min-height: 100px;
+    text-align: left;
+    border: 1px dashed #ccc;
+}
+
+.results-section h3 {
+    color: #555;
+}
+
+.results-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.results-section li {
+    margin-bottom: 5px;
+}
+
+#resetBtn {
+    background-color: #f44336;
+    margin-top: 1rem;
+}
+
+#resetBtn:hover {
+    background-color: #d32f2f;
+}
