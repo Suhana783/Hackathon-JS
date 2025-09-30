@@ -3,15 +3,64 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Hackathon19</title>
-   <link rel="stylesheet" href="Fetch.css">
+   <title>Fetch Users</title>
+
 </head>
 <body>
-   <h1 style="color: brown;">Fetch User's Data</h1>
-   <button id="btn">Load Users</button>
-   <div id="container"></div>
+   <div id="heading">
+   <h1>Load Users</h1>
+   </div>
 
+ <button id="loadUser">Load Users</button>
 
-   <script src="Fetch.js"></script>
+   <div class="user-data">
+   </div>
+   <script>
+   
+    
+   const loadButton = document.getElementById('loadUser');
+   const userDataContainer = document.querySelector('.user-data');
+    
+   async function fetchUsers() {
+        const API_URL = 'https://jsonplaceholder.typicode.com/users';
+        userDataContainer.innerHTML = 'Loading users...'; 
+
+        try {
+            // Await the fetch response
+            const response = await fetch(API_URL);
+
+            
+            if (!response.ok) {
+               // Throw error for bad HTTP status (404, 500, etc.)
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            // Await parsing the JSON body
+            const users = await response.json();
+            userDataContainer.innerHTML = ''; // Clear loading message
+
+            // Render each user
+            users.forEach(user => {
+                const userDiv = document.createElement('div');
+                // The .user-card class is styled in the CSS block above
+                userDiv.classList.add('user-card'); 
+
+                userDiv.innerHTML = `
+                    <h3>${user.name}</h3>
+                    <p><strong>Email:</strong> ${user.email}</p>
+                    <p><strong>City:</strong> ${user.address.city}</p>
+                `;
+                userDataContainer.appendChild(userDiv);
+            });
+
+        } catch (error) {
+            // Catch and display network/fetch/parsing errors
+            console.error('Error fetching user data:', error);
+            userDataContainer.innerHTML = `<p style="color: red; font-weight: bold;">Failed to load users: ${error.message}</p>`;
+        }
+    }
+
+    loadButton.addEventListener('click', fetchUsers);
+</script>
 </body>
 </html>
